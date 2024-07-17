@@ -4,6 +4,13 @@ AIS v6 PHP Framework
 AIS Framework is designed to be simple and efficient, allowing developers to quickly build and deploy applications. Its architecture promotes clean and maintainable code, making it a great choice for both beginners and experienced developers looking for a robust, scalable solution.
 
 * * *
+Installation
+-------------
+Clone, then use:
+```
+     git clone https://github.com/pwwiur/ais.git
+```
+* * *
 
 AIS Structure
 -------------
