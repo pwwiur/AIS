@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #111;
+    margin: 20px;
+    background: #070f2e;
+    color: white;
+    max-width: 1200px;
+    padding: 12px;
+    margin: 0 auto;
+}
+pre {
+    font-family: monospace;
+    background-color: #0f1427;
+    padding: 16px;
+    border-radius: 8px;
+    overflow: auto;
+}
+.ais-toolkit {
+    padding: 24px 32px;
+}
+.ais-toolkit .function-section {
+    padding: 12px 48px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #bbbbbb;
+}
+.ais-toolkit .function-section h3 {
+    margin: 2px -48px 6px;
+}
