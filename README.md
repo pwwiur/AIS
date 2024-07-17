@@ -8,7 +8,7 @@ Installation
 -------------
 Clone, then use:
 ```
-     git clone https://github.com/pwwiur/ais.git
+git clone https://github.com/pwwiur/ais.git
 ```
 * * *
 
