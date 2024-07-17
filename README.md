@@ -104,7 +104,7 @@ You can easily create APIs using AIS toolkit.
 ```php
 <?php
     // controller/api/user/get-users.php
-    $users = database::select('users', '*');
+    $users = database::select('users', '*', ['LIMIT' => 1]);
     response($users);
 ?>
 ```
@@ -118,8 +118,7 @@ The output will be in JSON format.
         {
             "id": 1,
             "name": "John Doe"
-        },
-        ...
+        }
     ]
 }
 ```
