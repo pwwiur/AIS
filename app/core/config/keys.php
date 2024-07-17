@@ -1,0 +1,6 @@
+<?php
+    const ENCRYPTOR = "QASDPK-00A006-K2MZQO-A1Z11Z";
+    const APIKEY = "BZkgUP0LBAUBZDyYrwc2efgrkeOAC1C82MuGWZPJAKsL0oLGZGbRBfpzcV8b";
+    const TESTKEY   = "SXsdAGbVYUTC1aH8";
+    const COOKIENC  = "SSA7LlHn210Sl0zZ";
+?>
