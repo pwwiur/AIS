@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.ibb.co/LPV7ftY/logo.png" width="240" alt="AIS Logo"></p>
+<p></p><p align="center"><img src="https://i.ibb.co/LPV7ftY/logo.png" width="240" alt="AIS Logo"></p><p></p><p></p>
 
 AIS v6 PHP Framework
 ===================
