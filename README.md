@@ -132,7 +132,7 @@ CLIs
 You can easily create CLI commands using AIS toolkit.
 ```php
 <?php
-    // controller/cli/jobs/deactivate-users.php
+    // controller/_cli/jobs/deactivate-users.php
     $inactive_users = database::select('users', '*', ['active' => 1]);
     ...
     cout("Deactivated users: " . count($inactive_users));
