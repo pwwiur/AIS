@@ -1,8 +1,17 @@
+<p></p><p align="center"><img src="https://i.ibb.co/LPV7ftY/logo.png" width="240" alt="AIS Logo"></p><p></p><p></p>
+
 AIS v6 PHP Framework
 ===================
 
 AIS Framework is designed to be simple and efficient, allowing developers to quickly build and deploy applications. Its architecture promotes clean and maintainable code, making it a great choice for both beginners and experienced developers looking for a robust, scalable solution.
 
+* * *
+Installation
+-------------
+Clone, then use:
+```
+git clone https://github.com/pwwiur/ais.git
+```
 * * *
 
 AIS Structure
@@ -97,7 +106,7 @@ You can easily create APIs using AIS toolkit.
 ```php
 <?php
     // controller/api/user/get-users.php
-    $users = database::select('users', '*');
+    $users = database::select('users', '*', ['LIMIT' => 1]);
     response($users);
 ?>
 ```
@@ -111,8 +120,7 @@ The output will be in JSON format.
         {
             "id": 1,
             "name": "John Doe"
-        },
-        ...
+        }
     ]
 }
 ```
