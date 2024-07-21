@@ -17,14 +17,14 @@
         $options = getopt($shortopts, $longopts);
         
         if (isset($options['v']) || isset($options['version'])) {
-            $target = "/cli/v";
+            $target = "/_cli/v";
         } 
         else if(isset($options['r']) || isset($options['request'])){
           $request = isset($options['r']) ? $options['r'] : $options['request'];
-          $target = "/cli/" . $request;
+          $target = "/_cli/" . $request;
         }
         else {
-            $target = "/cli/h";
+            $target = "/_cli/h";
         }
     }
     else {
@@ -44,10 +44,14 @@
     }
 
 
-    $levels = explode('/', $target);
+    $levels = explode('/', trim($target, "/"));
     $controller = CONTROLLER . $target . '.php';
 
-    if ($levels[0] == 'cli' and !CLI) {
+    if ($levels[0] == '_cli' and !CLI) {
+        http_status(404);
+    }
+
+    if (in_array($levels[count($levels) - 1], ["middleware", "preprocess", "postprocess"])) {
         http_status(404);
     }
 
