@@ -28,8 +28,6 @@ The AIS architecture is designed with simplicity at its core. This simplicity fa
 -------- js
 -------- css
 -------- img
----- vendor
----- composer.json
 ```
 * * *
 
