@@ -198,7 +198,7 @@ AIS Rules
 ToolKit
 -------
 
-Here is a full use for the methods in of AIS Framework: 
+Here is a full use for the methods in AIS Framework: 
 
 ### http_check($options)
 
