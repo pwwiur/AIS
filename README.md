@@ -198,7 +198,7 @@ AIS Rules
 ToolKit
 -------
 
-Here is a full use for the methods in of AIS Framework: [Toggle AIS Toolkit](javascript:void(0);) function toggleVisibility(id) { var element = document.getElementById(id); if (element.style.display === 'none') { element.style.display = 'block'; } else { element.style.display = 'none'; } }
+Here is a full use for the methods in of AIS Framework: 
 
 ### http_check($options)
 
