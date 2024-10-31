@@ -12,7 +12,7 @@
 -------- model
 -------- view
 ---- public
----- composer
+---- vendor
 </pre>
 <hr>
 

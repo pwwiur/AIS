@@ -10,7 +10,7 @@
     }
     function lib($lib) {
         $lib = trim(str_replace(D, S, $lib), S);
-        is_dir(LIB . $lib) ? require_once LIB . $lib . S . "init.php" : require_once LIB . $lib . S . PHP;
+        is_dir(LIB . $lib) ? require_once LIB . $lib . S . "init.php" : require_once LIB . $lib . PHP;
     }
     function model($model) {
         $model = trim(str_replace(D, S, $model), S);

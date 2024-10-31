@@ -1,7 +1,7 @@
 <?php
     define('ROOT', getcwd());
     const APP = ROOT . '/app/';
-    const COMPOSER = ROOT . '/composer/';
+    const COMPOSER = ROOT . '/vendor/';
 
 	const CORE = APP . 'core/';
 	const CONTROLLER = APP . 'controller/';
