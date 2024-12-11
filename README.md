@@ -102,7 +102,7 @@ For example, if a request is made to `/user/123/AIS-Project`, the dynamic routin
 ```php
 <?php
     // controller/user/dynamic/dynamic/open.php
-    echo "Opening project:  " . $link_vars[1] . " of " . $link_vars[1] . " user."; // Opening AIS-Project of 123 user.
+    echo "Opening project:  " . $link_vars[1] . " of " . $link_vars[0] . " user."; // Opening AIS-Project of 123 user.
 ?>
 ```
 
