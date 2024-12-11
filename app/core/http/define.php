@@ -6,6 +6,6 @@
         define('PROTOCOL', 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://');
         define('REQURI', $_SERVER['REQUEST_URI']);
         define('REQER', REQURI);
-        define('URN', explode("?", REQURI)[0]);
+        define('URN', explode("?", preg_replace('/^' . preg_quote(URLPREFIX, '/') . '/', '', REQURI))[0]);
         define('URL', PROTOCOL . REQUEST . REQURI);
     }

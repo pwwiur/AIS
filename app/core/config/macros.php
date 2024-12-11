@@ -15,4 +15,6 @@
 	const TEST = 'test/';
 
     const PUB = ROOT . '/public/';
+
+	const URLPREFIX = '';
 ?>

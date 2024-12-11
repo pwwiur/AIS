@@ -49,9 +49,42 @@
 <li>Controller <code>controller/user/home.php</code> will be executed.</li>
 <li>Postprocess <code>controller/user/postprocess.php</code> will be executed.</li>
 </ol>
+<h3>Dynamic routing</h3>
+<p>Dynamic routing in the AIS Framework allows for flexible URL patterns that adapt to the incoming requests dynamically. Instead of having a fixed URL structure, dynamic routing uses patterns that can match multiple URL paths. Here's how it works:</p>
+<pre>
+---- app
+-------- controller
+------------ user
+---------------- dynamic.php       (Accessible via /user/{value})
+</pre>
+<p>For example, if a request is made to <code>/user/123</code>, the dynamic routing system will interpret <code>123</code> as a parameter and process it using the <code>user/dynamic.php</code> controller by <code>$link_vars</code> variable. </p>
+<pre>
+&lt;?php
+    // controller/user/dynamic.php
+    echo "User id:  " . $link_vars[0]; // User id: 123
+?&gt;
+</pre>
+<h3>Multiple dynamic routing</h3>
+<p>You can use directory structure for dynamic routing too, For example:</p>
+<pre>
+---- app
+-------- controller
+------------ user
+---------------- dynamic
+-------------------- dynamic
+------------------------ home.php       (Accessible via /user/{value[0]}/{value[1]})
+------------------------ open.php       (Accessible via /user/{value[0]}/{value[1]}/open)
+-------------------- home.php           (Accessible via /user/{value[0]})
+-------------------- edit.php           (Accessible via /user/{value[0]}/edit)
+</pre>
+<p>For example, if a request is made to <code>/user/123/AIS-Project</code>, the dynamic routing system will interpret <code>123</code> as a parameter and process it using the <code>user/dynamic.php</code> controller by <code>$link_vars</code> variable. </p>
+<pre>
+&lt;?php
+    // controller/user/dynamic/dynamic/open.php
+    echo "Opening:  " . $link_vars[1] . " of " . $link_vars[1] . " user."; // Opening AIS-Project of 123 user.
+?&gt;
+</pre>
 <hr>
-
-
 <h2>Views</h2>
 <p>You can load a view using the <code>view(view_path, data, options)</code> function.</p>
 <pre>

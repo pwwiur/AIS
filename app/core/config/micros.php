@@ -10,4 +10,5 @@
 	const PHP = D . 'php';
 	const JSON = D . 'json';
 	const TXT = D . 'txt';
+	const HOME = S . "home" . PHP
 ?>

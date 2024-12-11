@@ -31,7 +31,7 @@
         $target = URN;
     }
 
-    if (strpos($target, '..') !== false) {
+    if (strpos($target, '..') !== false || strpos($target, '.php') !== false) {
         http_status(404);
     }
 
@@ -39,46 +39,76 @@
         $target = '/home';
     }
 
-    if (is_dir(CONTROLLER . $target) and file_exists(CONTROLLER . $target . '/home.php')) {
-        $target .= '/home';
-    }
-
-
     $levels = explode('/', trim($target, "/"));
-    $controller = CONTROLLER . $target . '.php';
+    $link_vars = [];
+    $middlewares = [];
+    $level_path = CONTROLLER;
+    foreach ($levels as $level) {
+        if (in_array($level, ["_cli", "middleware", "preprocess", "postprocess", "dynamic"])) {
+            http_status(404);
+        }
 
-    if ($levels[0] == '_cli' and !CLI) {
-        http_status(404);
-    }
+        $candid_level_path = $level_path . "/" . $level;
+        $dynamic_folder = $level_path . '/dynamic';
+        $dynamic_file = $level_path . '/dynamic.php';
 
-    if (in_array($levels[count($levels) - 1], ["middleware", "preprocess", "postprocess"])) {
-        http_status(404);
-    }
+        if ($level === end($levels)) {
+            if (file_exists($candid_level_path . HOME)) {
+                $level_path .= "/" . $level . HOME;
+            }
+            else if (file_exists($candid_level_path . PHP)) {
+                $level_path .= "/" . $level . PHP;
+            }
+            else if (file_exists($dynamic_folder . HOME)) {
+                $link_vars[] = $level;
+                $level_path = $dynamic_folder . HOME;
+            }
+            else if (file_exists($dynamic_file)) {
+                $link_vars[] = $level;
+                $level_path = $dynamic_file;
+            }
+            else {
+                http_status(404);
+            }
+        }
+        else {
+            if (is_dir($candid_level_path)) {
+                $level_path .= "/" . $level;
+            }
+            else if (is_dir($dynamic_folder)) {
+                $link_vars[] = $level;
+                $level_path = $dynamic_folder;
+            }
+            else {
+                http_status(404);
+            }
 
-    if (file_exists($controller)) {
-        $level_path = "";
-        foreach ($levels as $level) {
-            $level_path .= "/" . $level;
-            $middleware_file = CONTROLLER . $level_path . '/middleware.php';
+            $middleware_file = $level_path . '/middleware.php';
+
             if (file_exists($middleware_file)) {
-                require $middleware_file;
+                $middlewares[] = $middleware_file;
             }
         }
 
-        $preprocess_file = dirname($controller) . '/preprocess.php';
-        if (file_exists($preprocess_file)) {
-            require $preprocess_file;
-        }
+        
+    }
 
-        require $controller;
+    $controller = $level_path;
 
-        $postprocess_file = dirname($controller) . '/postprocess.php';
-        if (file_exists($postprocess_file)) {
-            require $postprocess_file;
-        }
-    } 
-    else {
-        http_status(404);
+    foreach ($middlewares as $middleware) {
+        require $middleware;
+    }
+
+    $preprocess_file = dirname($controller) . '/preprocess.php';
+    if (file_exists($preprocess_file)) {
+        require $preprocess_file;
+    }
+
+    require $controller;
+
+    $postprocess_file = dirname($controller) . '/postprocess.php';
+    if (file_exists($postprocess_file)) {
+        require $postprocess_file;
     }
 
     die_gracefully();

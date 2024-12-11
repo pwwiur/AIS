@@ -44,11 +44,11 @@
         }
     }
     function render($view, $data = [], $options = []){
+        ob_start();
         view($view, $data, $options);
         return ob_get_clean();
     }
     function close_everything() {
-        ob_end_flush();
         session_write_close();
     }
     function die_gracefully() {
@@ -72,7 +72,6 @@
         echo $delimiter;
     }
     function response($data, $meta = []) {
-		ob_clean();
 		if(is_callable($data)) {
 			echo $data();
 		}
@@ -101,7 +100,6 @@
         status($status, $data);
     }
     function http_status($code, $data = [], $meta = []) {
-        ob_clean();
         if (CLI) {
             cout("Error: " . $code, N);
         }
