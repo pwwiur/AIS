@@ -68,6 +68,44 @@ When client comes to `/user/`, the following steps will be taken:
 3.  Controller `controller/user/home.php` will be executed.
 4.  Postprocess `controller/user/postprocess.php` will be executed.
 
+
+### Dynamic routing
+
+Dynamic routing in the AIS Framework allows for flexible URL patterns that adapt to the incoming requests dynamically. Instead of having a fixed URL structure, dynamic routing uses patterns that can match multiple URL paths. Here's how it works:
+```
+---- app
+-------- controller
+------------ user
+---------------- dynamic.php       (Accessible via /user/{value})
+```
+For example, if a request is made to `/user/123`, the dynamic routing system will interpret `123` as a parameter and process it using the `user/dynamic.php` controller by `$link_vars` variable.
+```php
+<?php
+    // controller/user/dynamic.php
+    echo "User id:  " . $link_vars[0]; // User id: 123
+?>
+```
+### Multiple dynamic routing
+You can use directory structure for dynamic routing too, For example:
+```
+---- app
+-------- controller
+------------ user
+---------------- dynamic
+-------------------- dynamic
+------------------------ home.php       (Accessible via /user/{value[0]}/{value[1]})
+------------------------ open.php       (Accessible via /user/{value[0]}/{value[1]}/open)
+-------------------- home.php           (Accessible via /user/{value[0]})
+-------------------- edit.php           (Accessible via /user/{value[0]}/edit)
+```
+For example, if a request is made to `/user/123/AIS-Project`, the dynamic routing system will interpret `123` as a parameter and process it using the `user/dynamic.php` controller by `$link_vars` variable.
+```php
+<?php
+    // controller/user/dynamic/dynamic/open.php
+    echo "Opening project:  " . $link_vars[1] . " of " . $link_vars[1] . " user."; // Opening AIS-Project of 123 user.
+?>
+```
+
 * * *
 
 Views
