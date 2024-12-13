@@ -4,6 +4,8 @@ $active_libraries = [
     'tools',
     'database',
     'time',
+    'session',
+    'input'
 ];
 
 if (file_exists(COMPOSER . 'autoload.php')) {
